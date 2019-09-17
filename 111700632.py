@@ -137,7 +137,7 @@ if score == "1":
 
 
 # 七级地址
-else score == "2":
+else:
     temp = {}
     temp["姓名"] = name
     temp["手机"] = phone_num
