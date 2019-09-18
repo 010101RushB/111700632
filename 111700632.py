@@ -4,13 +4,6 @@ import json
 
 class Addrlts(object):
 
-    def get_name(self,s):
-        if s:
-            name = s[0]
-            return name
-        else:
-            return ""
-
     def get_phone_num(self, s):
         rlt = re.search(r'\d{11}', s)
         if rlt == None:
@@ -75,13 +68,15 @@ areas = ['东城区', '西城区', '朝阳区', '丰台区', '石景山区', '�
 t = input()
 
 score = t[0]
+t = t[2:]
+tt = t.split(",")
 
 addrlts = Addrlts()
 
 rltult = t.split(",")
 a = rltult[0]
 
-name = addrlts.get_name(rltult)
+name = tt[0]
 
 ns = rltult[1]
 
@@ -120,20 +115,20 @@ xz = addrlts.get_xz(ns)
 ns = ns.replace(xz, "", 1)
 detailaddr = ns
 
-road = addrlts.get_jiedao(ns)
-ns = ns.replace(road, "", 1)
+jiedao = addrlts.get_jiedao(ns)
+ns = ns.replace(jiedao, "", 1)
 
-doornum = addrlts.get_mph(ns)
-ns = ns.replace(doornum, "", 1)
+mph = addrlts.get_mph(ns)
+ns = ns.replace(mph, "", 1)
 
 # 五级地址
 if score == "1":
     temp = {}
     temp["姓名"] = name
     temp["手机"] = phone_num
-    temp["地址"] = [sheng, shi, xian, xz]
+    temp["地址"] = [sheng, shi, xian, xz, detailaddr]
   
-    print(temp)
+    print(json.dumps(temp))
 
 
 # 七级地址
@@ -141,6 +136,9 @@ else:
     temp = {}
     temp["姓名"] = name
     temp["手机"] = phone_num
-    temp["地址"] = [sheng, shi, xian, xz, detailaddr]
+    temp["地址"] = [sheng, shi, xian, xz, jiedao, mph]
 
-    print(temp)
+    print(json.dumps(temp))
+    
+    
+#2!李四,福建省福州137569511市鼓楼区鼓西街道湖滨路110号湖滨大厦一层
