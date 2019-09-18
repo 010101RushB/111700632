@@ -133,7 +133,7 @@ if score == "1":
     temp["手机"] = phone_num
     temp["地址"] = [sheng, shi, xian, xz]
   
-    print(json.dumps(temp))
+    print(temp)
 
 
 # 七级地址
@@ -143,6 +143,4 @@ else:
     temp["手机"] = phone_num
     temp["地址"] = [sheng, shi, xian, xz, detailaddr]
 
-    print(json.dumps(temp))
-
-
+    print(temp)
