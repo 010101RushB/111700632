@@ -113,13 +113,14 @@ if xian != "":
 
 xz = addrlts.get_xz(ns)
 ns = ns.replace(xz, "", 1)
-detailaddr = ns
 
 jiedao = addrlts.get_jiedao(ns)
 ns = ns.replace(jiedao, "", 1)
 
 mph = addrlts.get_mph(ns)
 ns = ns.replace(mph, "", 1)
+
+detailaddr = ns
 
 # 五级地址
 if score == "1":
@@ -136,7 +137,7 @@ else:
     temp = {}
     temp["姓名"] = name
     temp["手机"] = phone_num
-    temp["地址"] = [sheng, shi, xian, xz, jiedao, mph]
+    temp["地址"] = [sheng, shi, xian, xz, jiedao, mph, detailaddr]
 
     print(json.dumps(temp))
     
